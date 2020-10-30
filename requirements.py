@@ -1,0 +1,12 @@
+wheel
+flask==1.1.2
+python-dotenv==0.14.0
+uuid0==0.2.7
+pyvirtualdisplay==0.2.5
+selenium==3.141.0
+apscheduler==3.6.3
+requests==2.18.4
+flask-cors==3.0.8 
+gunicorn==19.7.1
+Flask-SQLAlchemy==2.4.4
+openpyxl==3.0.5
