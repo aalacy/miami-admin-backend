@@ -27,7 +27,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Chrome, ChromeOptions
 from openpyxl import load_workbook
-from pyvirtualdisplay import Display
 import pdb
 
 from app.email import send_simple_email, send_email_with_attachment_general
@@ -62,7 +61,7 @@ class Driver():
 		return self.driver
 
 	def open_chrome_browser(self):
-		Display(visible=0, size=(620, 840)).start()
+		# Display(visible=0, size=(620, 840)).start()
 
 		options = ChromeOptions()
 		# options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
