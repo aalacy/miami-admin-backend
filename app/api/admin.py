@@ -10,7 +10,7 @@ from app import sched
 from flask import send_from_directory
 
 def run_scraper():
-	Driver().send_email()
+	Driver().run_scraper()
 
 @bp.route('/static/download')
 def root():
