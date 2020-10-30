@@ -27,6 +27,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Chrome, ChromeOptions
 from openpyxl import load_workbook
+from pyvirtualdisplay import Display
 import pdb
 
 from app.email import send_simple_email, send_email_with_attachment_general
@@ -61,6 +62,8 @@ class Driver():
 		return self.driver
 
 	def open_chrome_browser(self):
+		Display(visible=0, size=(620, 840)).start()
+		
 		options = ChromeOptions()
 		options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
 		options.add_argument('--no-sandbox')
@@ -70,7 +73,7 @@ class Driver():
 		chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		options.add_argument('headless')
-		path = f"{self.basedir}/data/chromedriver"
+		path = f"{self.basedir}/data/chromedriver.exe"
 		chrome = Chrome(executable_path=path, options=options)
 
 		chrome.implicitly_wait(20)
