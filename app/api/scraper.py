@@ -74,7 +74,7 @@ class Driver():
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		options.add_argument('headless')
 		path = f"{self.basedir}/data/chromedriver"
-		chrome = Chrome(executable_path=path, options=options)
+		chrome = Chrome(options=options)
 
 		chrome.implicitly_wait(20)
 		self.driver = chrome
