@@ -8,7 +8,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
-SENDGRID_API_KEY='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'
+SENDGRID_API_KEY='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'
 sg = SendGridAPIClient(SENDGRID_API_KEY)
 
 def send_simple_email(text, title='Report about the scraper', to_email='ideveloper003@protonmail.com'):
