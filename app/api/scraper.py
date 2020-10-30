@@ -63,17 +63,17 @@ class Driver():
 
 	def open_chrome_browser(self):
 		Display(visible=0, size=(620, 840)).start()
-		
+
 		options = ChromeOptions()
-		options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
+		# options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
 		options.add_argument('--no-sandbox')
-		options.add_argument('--disable-dev-shm-usage')
+		# options.add_argument('--disable-dev-shm-usage')
 		chrome_prefs = {}
 		options.experimental_options["prefs"] = chrome_prefs
 		chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		options.add_argument('headless')
-		path = f"{self.basedir}/data/chromedriver.exe"
+		path = f"{self.basedir}/data/chromedriver"
 		chrome = Chrome(executable_path=path, options=options)
 
 		chrome.implicitly_wait(20)
