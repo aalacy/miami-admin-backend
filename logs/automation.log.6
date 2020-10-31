@@ -1,0 +1,129 @@
+2020-10-30 02:40:17,504 ERROR: Exception on /api/admin/sysco [GET] [in /home/imaster/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/g/work/chris/backend/app/api/admin.py", line 15, in get_sysco_prices
+    sched.add_job(driver_factory.scrape_sysco, DateTrigger(datetime.now()), replace_existing=True)
+NameError: name 'DateTrigger' is not defined
+2020-10-30 02:40:36,251 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 02:43:13,583 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 02:43:21,215 ERROR: Exception on /api/admin/sysco [GET] [in /home/imaster/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/g/work/chris/backend/app/api/admin.py", line 15, in get_sysco_prices
+    sched.add_job(Driver().run_sysco, DateTrigger(datetime.now()), replace_existing=True)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 443, in add_job
+    self._real_add_job(job, jobstore, replace_existing)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 867, in _real_add_job
+    store.add_job(job)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/jobstores/sqlalchemy.py", line 95, in add_job
+    'job_state': pickle.dumps(job.__getstate__(), self.pickle_protocol)
+AttributeError: Can't pickle local object '_createenviron.<locals>.encode'
+2020-10-30 02:45:30,184 ERROR: Exception on /api/admin/sysco [GET] [in /home/imaster/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/g/work/chris/backend/app/api/admin.py", line 15, in get_sysco_prices
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 443, in add_job
+    self._real_add_job(job, jobstore, replace_existing)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 867, in _real_add_job
+    store.add_job(job)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/jobstores/sqlalchemy.py", line 95, in add_job
+    'job_state': pickle.dumps(job.__getstate__(), self.pickle_protocol)
+AttributeError: Can't pickle local object '_createenviron.<locals>.encode'
+2020-10-30 02:46:50,614 ERROR: Exception on /api/admin/sysco [GET] [in /home/imaster/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/g/work/chris/backend/app/api/admin.py", line 15, in get_sysco_prices
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 443, in add_job
+    self._real_add_job(job, jobstore, replace_existing)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 867, in _real_add_job
+    store.add_job(job)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/jobstores/sqlalchemy.py", line 95, in add_job
+    'job_state': pickle.dumps(job.__getstate__(), self.pickle_protocol)
+AttributeError: Can't pickle local object '_createenviron.<locals>.encode'
+2020-10-30 02:48:03,910 ERROR: Exception on /api/admin/sysco [GET] [in /home/imaster/.local/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/imaster/.local/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/g/work/chris/backend/app/api/admin.py", line 15, in get_sysco_prices
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 443, in add_job
+    self._real_add_job(job, jobstore, replace_existing)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/schedulers/base.py", line 867, in _real_add_job
+    store.add_job(job)
+  File "/home/imaster/.local/lib/python3.6/site-packages/apscheduler/jobstores/sqlalchemy.py", line 95, in add_job
+    'job_state': pickle.dumps(job.__getstate__(), self.pickle_protocol)
+AttributeError: Can't pickle local object '_createenviron.<locals>.encode'
+2020-10-30 02:53:37,534 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 02:57:07,326 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 02:57:37,420 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 02:57:38,400 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 03:00:37,298 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 03:08:25,429 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 03:08:26,391 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 03:08:44,742 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 03:08:45,613 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 04:05:04,562 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]
+2020-10-30 04:06:01,328 INFO: automation startup [in /mnt/g/work/chris/backend/app/__init__.py:54]

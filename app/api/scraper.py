@@ -25,7 +25,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Chrome, ChromeOptions
+from selenium.webdriver import Firefox, Chrome, ChromeOptions, FirefoxProfile
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from openpyxl import load_workbook
 import pdb
 
@@ -66,20 +67,27 @@ class Driver():
 	def open_chrome_browser(self):
 		# Display(visible=0, size=(620, 840)).start()
 
-		options = ChromeOptions()
-		# options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
+		# options = ChromeOptions()
+		options = FirefoxOptions()
+		profile = FirefoxProfile()
+		# # options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
 		options.add_argument('--no-sandbox')
 		options.add_argument('--disable-dev-shm-usage')
 		# options.add_argument('--headless')
-		chrome_prefs = {}
-		options.experimental_options["prefs"] = chrome_prefs
-		chrome_prefs["profile.default_content_settings"] = {"images": 2}
-		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
-		path = f"{self.basedir}/data/chromedriver"
-		chrome = Chrome(executable_path=path, options=options)
+		# chrome_prefs = {}
+		# options.experimental_options["prefs"] = chrome_prefs
+		# chrome_prefs["profile.default_content_settings"] = {"images": 2}
+		# chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
+		# path = f"{self.basedir}/data/chromedriver.exe"
+		profile.set_preference("permissions.default.image", 2)
+		path = f"{self.basedir}/data/geckodriver"
+		# chrome = Chrome(executable_path=path, options=options)
+		firefox = Firefox(executable_path=path, options=options, firefox_profile=profile)
 
-		chrome.implicitly_wait(20)
-		self.driver = chrome
+		# chrome.implicitly_wait(20)
+
+		# self.driver = chrome
+		self.driver = firefox
 
 	def close_browser(self):
 		self.driver.close()
