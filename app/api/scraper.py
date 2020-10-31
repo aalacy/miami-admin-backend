@@ -73,7 +73,7 @@ class Driver():
 		# # options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
 		options.add_argument('--no-sandbox')
 		options.add_argument('--disable-dev-shm-usage')
-		# options.add_argument('--headless')
+		options.add_argument('--headless')
 		# chrome_prefs = {}
 		# options.experimental_options["prefs"] = chrome_prefs
 		# chrome_prefs["profile.default_content_settings"] = {"images": 2}
@@ -165,7 +165,7 @@ class Driver():
 		# 				is_done = True
 
 	def send_email(self):
-		text = 'Finished the scraper. \n Please check the following url to download the excel file \n http://100.25.17.56/api/static/download'
+		text = 'Finished the scraper. \n Please check the following url to download the excel file \n http://3.230.135.45/api/static/download'
 		send_simple_email(text=text)
 		# b64data = [encode_csv_data(self.sysco_path, 'Item List')]
 		# html_content = '<strong>Here is the xlxs attachment after run scrapers</strong>'
