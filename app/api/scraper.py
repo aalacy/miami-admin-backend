@@ -40,8 +40,8 @@ CHENEY_USERNAME = 'cmdallm@gmail.com'
 CHENEY_PASSWORD = 'cbi2644'
 
 class Driver():
-	basedir = os.path.abspath(os.path.dirname(__file__))
-	sysco_path = f'{basedir}/data/{SYSCO_DATASHEET}'
+	basedir = os.path.dirname(os.getcwd())
+	sysco_path = f'{basedir}/backend/data/{SYSCO_DATASHEET}'
 
 	def __init__(self):
 		self.open_chrome_browser()
@@ -73,7 +73,7 @@ class Driver():
 		chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		path = f"{self.basedir}/data/chromedriver"
-		chrome = Chrome(options=options)
+		chrome = Chrome(executable_path=path, options=options)
 
 		chrome.implicitly_wait(20)
 		self.driver = chrome
