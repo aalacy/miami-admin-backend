@@ -43,21 +43,29 @@ SYSCO_DATASHEET = '_Item List.xlsx'
 CHENEY_USERNAME = 'cmdallm@gmail.com'
 CHENEY_PASSWORD = 'cbi2644'
 
+class Item(object):
+    def __init__(self, id=None, description=None, supplier=None, order_code=None, case_size=None, case_cost=None):
+        self.id = id # avoid using Python keywords where possible
+        self.description = description
+        self.supplier = supplier
+        self.order_code = order_code
+        self.case_size = case_size
+        self.case_cost = case_cost
+
 class Driver():
 	basedir = os.path.abspath(os.path.dirname(__file__))
 	sysco_path = f'{basedir}/data/{SYSCO_DATASHEET}'
 
 	def __init__(self):
-		self.open_chrome_browser()
 		self.session = requests.Session()
 
 	def close(self):
 		self.driver.close()
 
 	def get(self, link):
-		print("driver: fetching link: " + link)
+		logger.info("driver: fetching link: " + link)
 		status = self.get_driver().get(link)
-		print("driver: done fetching " + link)
+		logger.info("driver: done fetching " + link)
 		# time.sleep(20)
 		return status
 
@@ -68,25 +76,25 @@ class Driver():
 		# Display(visible=0, size=(620, 840)).start()
 
 		# options = ChromeOptions()
-		options = FirefoxOptions()
-		profile = FirefoxProfile()
 		# # options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
-		options.add_argument('--no-sandbox')
-		options.add_argument('--disable-dev-shm-usage')
-		options.add_argument('--headless')
 		# chrome_prefs = {}
 		# options.experimental_options["prefs"] = chrome_prefs
 		# chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		# chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		# path = f"{self.basedir}/data/chromedriver.exe"
+		# chrome = Chrome(executable_path=path, options=options)
+		# chrome.implicitly_wait(20)
+		# self.driver = chrome
+		
+		options = FirefoxOptions()
+		profile = FirefoxProfile()
+		options.add_argument('--no-sandbox')
+		options.add_argument('--disable-dev-shm-usage')
+		options.add_argument('--headless')
 		profile.set_preference("permissions.default.image", 2)
 		path = f"{self.basedir}/data/geckodriver"
-		# chrome = Chrome(executable_path=path, options=options)
 		firefox = Firefox(executable_path=path, options=options, firefox_profile=profile)
 
-		# chrome.implicitly_wait(20)
-
-		# self.driver = chrome
 		self.driver = firefox
 
 	def close_browser(self):
@@ -135,17 +143,47 @@ class Driver():
 			search_input.clear()
 		return value
 
+	def read_sheet_as_table(self):
+		self.read_datasheet()
+
+		# header
+		self.headers = []
+		header_cells_generator = self.sheet.iter_rows(max_row=1)
+
+		for cell in header_cells_generator:
+			for i in range(len(cell)):
+				if cell[i].value:
+					self.headers.append(cell[i].value)
+
+		# header = [cell.value for cell in self.sheet.rows[1]]
+		self.items = []
+		index = 0
+		for row in self.sheet.rows:
+			item = {
+				'id': index
+			}
+			index += 1
+			if index == 1:
+				continue
+			for key, cell in zip(self.headers, row):
+				if cell.value:
+					item[key] = cell.value
+
+			self.items.append(item)
+
+		return self.items, self.headers
+
 	def read_datasheet(self):
 		logger.info(' ----- Read Sheet')
 		self.wb = load_workbook(filename = self.sysco_path)
 		self.sheet = self.wb['Sheet1']
 
 	def save_close_datasheet(self):
-		print('--- save and close sheet')
+		logger.info('--- save and close sheet')
 		try:
 			self.wb.save(self.sysco_path)
 		except Exception as e:
-			print(str(e))
+			logger.info(str(e))
 
 	def update_sysco_datasheet(self):
 		logger.warning(' ----- Update Sysco Sheet')
@@ -193,9 +231,11 @@ class Driver():
 			self.get('https://shop.sysco.com/app/lists')
 			time.sleep(23)
 		except Exception as e:
-			print(str(e))
+			logger.info(str(e))
 
 	def run_scraper(self):
+		self.open_chrome_browser()
+	
 		self.read_datasheet()
 
 		self.run_sysco()
@@ -237,10 +277,10 @@ class Driver():
 			self.get('https://www.cheneycentral.com/Web/#/itembook')
 			time.sleep(60)
 		except Exception as e:
-			print(str(e))
+			logger.info(str(e))
 
 	def update_cheney_datasheet(self):
-		print(' ----- Update Sheet')
+		logger.info(' ----- Update Sheet')
 
 		# temp search
 		self.search_cheney_item('234234')
@@ -260,7 +300,7 @@ class Driver():
 		el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'table-list')]/tbody/tr/td[6]")))
 		if el.text:
 			value = el.text.split('\n')[0]
-			print(f'==== found out value {value} for {item_number}')
+			logger.info(f'==== found out value {value} for {item_number}')
 
 		return value
 
@@ -274,7 +314,7 @@ class Driver():
 			search_input.send_keys(Keys.RETURN)
 			is_done = True
 		except Exception as e:
-			print(f'[cheney] cannot find search element {str(e)} for {item_number}')
+			logger.info(f'[cheney] cannot find search element {str(e)} for {item_number}')
 	
 		try:
 			time.sleep(2)
@@ -283,7 +323,7 @@ class Driver():
 			try:
 				value = self.find_cheney_item(item_number)
 			except Exception as e:
-				print(f'[cheney] cannot find price element {str(e)} for {item_number}')
+				logger.info(f'[cheney] cannot find price element {str(e)} for {item_number}')
 
 		if search_input and is_done:
 			search_input.clear()

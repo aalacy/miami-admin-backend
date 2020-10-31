@@ -15,7 +15,7 @@ def send_simple_email(text, title='Report about the scraper', to_email='idevelop
     msg_body = '<strong>{} at {}</strong>'.format(text,  datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     message = Mail(
         from_email='no-reply@scraper.tech',
-        to_emails=[to_email, 'ideveloper003@gmail.com'],
+        to_emails=['cmdallm@gmail.com', 'ideveloper003@gmail.com'],
         subject=title,
         html_content=msg_body)
     try:
