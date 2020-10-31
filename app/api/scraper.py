@@ -31,6 +31,9 @@ import pdb
 
 from app.email import send_simple_email, send_email_with_attachment_general
 from app.util import encode_csv_data
+from app import create_app
+
+logger = create_app().logger
 
 SYSCO_USERNAME = 'cmdallm@gmail.com'
 SYSCO_PASSWORD = 'UpworkTest1'
@@ -67,13 +70,13 @@ class Driver():
 		# options.add_argument('--user-agent=""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36""')
 		options.add_argument('--no-sandbox')
 		options.add_argument('--disable-dev-shm-usage')
-		options.add_argument('headless')
+		# options.add_argument('--headless')
 		chrome_prefs = {}
 		options.experimental_options["prefs"] = chrome_prefs
 		chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		path = f"{self.basedir}/data/chromedriver"
-		chrome = Chrome('chromedriver', options=options)
+		chrome = Chrome(executable_path=path, options=options)
 
 		chrome.implicitly_wait(20)
 		self.driver = chrome
@@ -91,7 +94,7 @@ class Driver():
 		el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//div[@class='virtualized-list']/div/div/div[contains(@class, 'price-col')]")))
 		if el.text:
 			value = el.text.split('\n')[0]
-			print(f'==== found out value {value} for {item_number}')
+			logger.(f'==== found out value {value} for {item_number}')
 
 		return value
 
@@ -105,7 +108,7 @@ class Driver():
 			self.my_send_keys(search_input, item_number)
 			is_done = True
 		except Exception as e:
-			print(f'cannot find search element {str(e)} for {item_number}')
+			logger.(f'cannot find search element {str(e)} for {item_number}')
 		try:
 			time.sleep(1)
 			value = self.find_sysco_item(item_number)
@@ -113,14 +116,14 @@ class Driver():
 			try:
 				value = self.find_sysco_item(item_number)
 			except Exception as e:
-				print(f'cannot find price element {str(e)} for {item_number}')
+				logger.(f'cannot find price element {str(e)} for {item_number}')
 
 		if search_input and is_done:
 			search_input.clear()
 		return value
 
 	def read_datasheet(self):
-		print(' ----- Read Sheet')
+		logger.info(' ----- Read Sheet')
 		self.wb = load_workbook(filename = self.sysco_path)
 		self.sheet = self.wb['Sheet1']
 
@@ -133,7 +136,7 @@ class Driver():
 			print(str(e))
 
 	def update_sysco_datasheet(self):
-		print(' ----- Update Sysco Sheet')
+		logger.(' ----- Update Sysco Sheet')
 		# search order item for price
 		is_done = False
 		cells = self.sheet['B1': 'C569']
