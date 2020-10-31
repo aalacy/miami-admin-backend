@@ -58,7 +58,7 @@ def upload_sheet():
 
 	return jsonify(status=status, message=message), code
 
-@bp.route('/admin/read', methods=['GET'])
+@bp.route('/admin/read_sheet', methods=['GET'])
 def read_sheetdata():
 	items = []
 	headers = []
