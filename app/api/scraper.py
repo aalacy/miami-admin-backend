@@ -40,8 +40,8 @@ CHENEY_USERNAME = 'cmdallm@gmail.com'
 CHENEY_PASSWORD = 'cbi2644'
 
 class Driver():
-	basedir = os.path.dirname(os.getcwd())
-	sysco_path = f'{basedir}/backend/data/{SYSCO_DATASHEET}'
+	basedir = os.path.dirname(os.getcwd()) + '/backend'
+	sysco_path = f'{basedir}/data/{SYSCO_DATASHEET}'
 
 	def __init__(self):
 		self.open_chrome_browser()
