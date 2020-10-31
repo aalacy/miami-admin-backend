@@ -94,7 +94,7 @@ class Driver():
 		el = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//div[@class='virtualized-list']/div/div/div[contains(@class, 'price-col')]")))
 		if el.text:
 			value = el.text.split('\n')[0]
-			logger.(f'==== found out value {value} for {item_number}')
+			logger.info(f'==== found out value {value} for {item_number}')
 
 		return value
 
@@ -108,7 +108,7 @@ class Driver():
 			self.my_send_keys(search_input, item_number)
 			is_done = True
 		except Exception as e:
-			logger.(f'cannot find search element {str(e)} for {item_number}')
+			logger.warning(f'cannot find search element {str(e)} for {item_number}')
 		try:
 			time.sleep(1)
 			value = self.find_sysco_item(item_number)
@@ -116,7 +116,7 @@ class Driver():
 			try:
 				value = self.find_sysco_item(item_number)
 			except Exception as e:
-				logger.(f'cannot find price element {str(e)} for {item_number}')
+				logger.warning(f'cannot find price element {str(e)} for {item_number}')
 
 		if search_input and is_done:
 			search_input.clear()
@@ -136,7 +136,7 @@ class Driver():
 			print(str(e))
 
 	def update_sysco_datasheet(self):
-		logger.(' ----- Update Sysco Sheet')
+		logger.warning(' ----- Update Sysco Sheet')
 		# search order item for price
 		is_done = False
 		cells = self.sheet['B1': 'C569']
