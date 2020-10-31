@@ -34,3 +34,123 @@ JavaScript error: , line 0: AbortError: A request was aborted, for example throu
 
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1604149353316	geckodriver	INFO	Listening on 127.0.0.1:58632
+1604149354317	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofileUZc2nK"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604149356409	Marionette	INFO	Listening on port 58639
+1604149356457	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149445962, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149445962, line 19202: unreachable code after return statement
+1604149461956	geckodriver	INFO	Listening on 127.0.0.1:58901
+1604149462968	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofileb9USzH"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604149465841	Marionette	INFO	Listening on port 58909
+1604149466102	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149553467, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149553467, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149603167, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149603167, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149636926, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149636926, line 19202: unreachable code after return statement
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1604149705782	Marionette	INFO	Stopped listening on port 58909
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1604149712457	geckodriver	INFO	Listening on 127.0.0.1:61069
+1604149713441	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofiletWVFCP"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604149716636	Marionette	INFO	Listening on port 61076
+1604149717100	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149724711, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149724711, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149767516, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149767516, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149805500, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149805500, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149923287, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604149923287, line 19202: unreachable code after return statement
+1604150111540	Marionette	INFO	Stopped listening on port 61076
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1604150128900	geckodriver	INFO	Listening on 127.0.0.1:61478
+1604150129865	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofilev9dFcr"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604150133443	Marionette	INFO	Listening on port 61486
+1604150133511	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150142899, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150142899, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150191493, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150191493, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150233349, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150233349, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150327698, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150327698, line 19202: unreachable code after return statement
+1604150572237	Marionette	INFO	Stopped listening on port 61486
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1604150580952	geckodriver	INFO	Listening on 127.0.0.1:54877
+1604150581957	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofileWLxOY2"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604150584689	Marionette	INFO	Listening on port 54884
+1604150585095	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150596454, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150596454, line 19202: unreachable code after return statement
+JavaScript error: chrome://marionette/content/navigate.js, line 213: TypeError: driver.dialogObserver is null
+JavaScript error: https://www.cheneycentral.com/Web/scripts/angular.min.js?v=1604150589134, line 6: Error: [$injector:modulerr] http://errors.angularjs.org/1.5.3/$injector/modulerr?p0=CheneyPortalWeb&p1=%5B%24injector%3Anomod%5D%20http%3A%2F%2Ferrors.angularjs.org%2F1.5.3%2F%24injector%2Fnomod%3Fp0%3DCheneyPortalWeb%0AO%2F%3C%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A6%3A416%0Aie%2F%3C%2F%3C%2F%3C%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A25%3A147%0Ab%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A24%3A211%0Aie%2F%3C%2F%3C%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A24%3A454%0Ag%2F%3C%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A39%3A287%0Aq%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A7%3A355%0Ag%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A39%3A136%0Aeb%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A43%3A165%0Ac%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A20%3A463%0Ayc%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A21%3A274%0Ade%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A20%3A83%0A%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A310%3A123%0Ab%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A186%3A389%0APf%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A36%3A477%0Ad%40https%3A%2F%2Fwww.cheneycentral.com%2FWeb%2Fscripts%2Fangular.min.js%3Fv%3D1604150589134%3A36%3A424%0A
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1604150605653	Marionette	INFO	Stopped listening on port 54884
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1604150622386	geckodriver	INFO	Listening on 127.0.0.1:54998
+1604150623390	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofileXzunjy"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604150626191	Marionette	INFO	Listening on port 55006
+1604150626532	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150636126, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150636126, line 19202: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150692107, line 8952: unreachable code after return statement
+JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=1604150692107, line 19202: unreachable code after return statement
+1604150829587	Marionette	INFO	Stopped listening on port 55006
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

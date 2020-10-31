@@ -90,7 +90,12 @@ class Driver():
 		self.driver = firefox
 
 	def close_browser(self):
+		logger.info('=== close browser')
 		self.driver.close()
+
+	def close_sheet(self):
+		logger.info('=== close datasheet')
+		self.wb.close()
 
 	def my_send_keys(self, element, value):
 		for a in value:
@@ -139,7 +144,6 @@ class Driver():
 		print('--- save and close sheet')
 		try:
 			self.wb.save(self.sysco_path)
-			self.wb.close()
 		except Exception as e:
 			print(str(e))
 
@@ -154,6 +158,8 @@ class Driver():
 				time.sleep(1)
 				if value:
 					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
+
+					break
 					
 		# for row in self.sheet.rows:
 		# 	for cell in row:
@@ -192,16 +198,19 @@ class Driver():
 			print(str(e))
 
 	def run_scraper(self):
+		self.read_datasheet()
+
 		self.run_sysco()
 
 		self.run_cheney()
 
 		self.close_browser()
 
+		self.close_sheet()
+
 		self.send_email()
 
 	def run_sysco(self):
-		self.read_datasheet()
 
 		self.scrape_sysco()
 
@@ -223,16 +232,21 @@ class Driver():
 			self.my_send_keys(pwd_field, CHENEY_PASSWORD)
 			pwd_field.send_keys(Keys.RETURN)
 
-			time.sleep(20)
+			time.sleep(10)
 
 			# go to the list page
 			self.get('https://www.cheneycentral.com/Web/#/itembook')
-			time.sleep(13)
+			self.get('https://www.cheneycentral.com/Web/#/itembook')
+			time.sleep(60)
 		except Exception as e:
 			print(str(e))
 
 	def update_cheney_datasheet(self):
 		print(' ----- Update Sheet')
+
+		# temp search
+		self.search_cheney_item('234234')
+
 		# search order item for price
 		is_done = False
 		cells = self.sheet['B1': 'C569']
@@ -242,6 +256,8 @@ class Driver():
 				time.sleep(1)
 				if value:
 					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
+
+					break
 
 	def find_cheney_item(self, item_number):
 		value = ''
@@ -273,21 +289,17 @@ class Driver():
 			except Exception as e:
 				print(f'[cheney] cannot find price element {str(e)} for {item_number}')
 
-		# if search_input and is_done:
-		# 	search_input.clear()
+		if search_input and is_done:
+			search_input.clear()
 		return value
 
 
 	def run_cheney(self):
-		self.read_datasheet()
-
 		self.scrape_cheney()
 
 		self.update_cheney_datasheet()
 
 		self.save_close_datasheet()
-		
-
 
 if __name__ == '__main__':
 	# Driver().run_sysco()
