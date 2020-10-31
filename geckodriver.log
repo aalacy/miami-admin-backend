@@ -154,3 +154,11 @@ JavaScript warning: https://www.cheneycentral.com/Web/scripts/alasql.js?v=160415
 
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1604175388619	geckodriver	INFO	Listening on 127.0.0.1:56332
+1604175412389	geckodriver	INFO	Listening on 127.0.0.1:56360
+1604175413211	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-dev-shm-usage" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\cbarl\\AppData\\Local\\Temp\\rust_mozprofile3lkYSA"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604175418722	Marionette	INFO	Listening on port 56367
+1604175419019	Marionette	WARN	TLS certificate errors will be ignored for this session

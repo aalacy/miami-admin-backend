@@ -85,7 +85,7 @@ class Driver():
 		# chrome = Chrome(executable_path=path, options=options)
 		# chrome.implicitly_wait(20)
 		# self.driver = chrome
-		
+
 		options = FirefoxOptions()
 		profile = FirefoxProfile()
 		options.add_argument('--no-sandbox')
@@ -189,22 +189,19 @@ class Driver():
 		logger.warning(' ----- Update Sysco Sheet')
 		# search order item for price
 		is_done = False
-		cells = self.sheet['B1': 'C569']
-		for c1, c2 in cells:
-			if c1.value.strip() == 'Sysco' and c2.value:
-				value = self.search_sysco_item(str(c2.value))
+		for row in self.sheet.rows:
+			is_exist = False
+			code_value = ''
+			for cell in row:
+				if  cell.column_letter == 'B' and cell.value and cell.value.strip() == 'Sysco':
+					is_exist = True
+				if cell.column_letter == 'C' and cell.value:
+					code_value = cell.value
+			if code_value:
+				value = self.search_sysco_item(str(code_value))
 				time.sleep(1)
 				if value:
-					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
-
-		# for row in self.sheet.rows:
-		# 	for cell in row:
-		# 		if cell.column_letter == 'A' and cell.value:
-		# 			value = self.search_item(str(cell.value))
-		# 			time.sleep(1)
-		# 			if value:
-		# 				self.sheet[f'D{cell.row}'].value = value.replace('$', '')
-		# 				is_done = True
+					self.sheet[f'E{cell.row}'].value = value.replace('$', '')
 
 	def send_email(self):
 		text = 'Finished the scraper. \n Please check the following url to download the excel file \n http://3.230.135.45/api/static/download'
@@ -287,13 +284,19 @@ class Driver():
 
 		# search order item for price
 		is_done = False
-		cells = self.sheet['B1': 'C569']
-		for c1, c2 in cells:
-			if c1.value.strip() == 'Cheney' and c2.value:
-				value = self.search_cheney_item(str(c2.value))
+		for row in self.sheet.rows:
+			is_exist = False
+			code_value = ''
+			for cell in row:
+				if  cell.column_letter == 'B' and cell.value and cell.value.strip() == 'Cheney':
+					is_exist = True
+				if cell.column_letter == 'C' and cell.value:
+					code_value = cell.value
+			if code_value:
+				value = self.search_cheney_item(str(code_value))
 				time.sleep(1)
 				if value:
-					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
+					self.sheet[f'E{cell.row}'].value = value.replace('$', '')
 
 	def find_cheney_item(self, item_number):
 		value = ''
