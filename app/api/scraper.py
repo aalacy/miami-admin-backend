@@ -196,14 +196,16 @@ class Driver():
 
 		self.run_cheney()
 
+		self.close_browser()
+
+		self.send_email()
+
 	def run_sysco(self):
 		self.read_datasheet()
 
 		self.scrape_sysco()
 
 		self.update_sysco_datasheet()
-
-		self.close_browser()
 
 		self.save_close_datasheet()
 
@@ -283,11 +285,9 @@ class Driver():
 
 		self.update_cheney_datasheet()
 
-		self.close_browser()
-
 		self.save_close_datasheet()
+		
 
-		self.send_email()
 
 if __name__ == '__main__':
 	# Driver().run_sysco()
