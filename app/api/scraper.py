@@ -159,8 +159,6 @@ class Driver():
 				if value:
 					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
 
-					break
-					
 		# for row in self.sheet.rows:
 		# 	for cell in row:
 		# 		if cell.column_letter == 'A' and cell.value:
@@ -256,8 +254,6 @@ class Driver():
 				time.sleep(1)
 				if value:
 					self.sheet[f'E{c2.row}'].value = value.replace('$', '')
-
-					break
 
 	def find_cheney_item(self, item_number):
 		value = ''
