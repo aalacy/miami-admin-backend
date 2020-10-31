@@ -73,7 +73,7 @@ class Driver():
 		chrome_prefs["profile.default_content_settings"] = {"images": 2}
 		chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
 		path = f"{self.basedir}/data/chromedriver"
-		chrome = Chrome(executable_path=path, options=options)
+		chrome = Chrome(options=options)
 
 		chrome.implicitly_wait(20)
 		self.driver = chrome
