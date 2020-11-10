@@ -1,6 +1,7 @@
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, request, current_app
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
@@ -27,10 +28,14 @@ sched = BackgroundScheduler(jobstores=jobstores,
 executors=executors, job_defaults=job_defaults, timezone='GMT')
 sched.start()
 
+db = SQLAlchemy()
+
 def create_app(config_class=Config):
 	app = Flask(__name__, static_folder='static')
 	CORS(app)
 	app.config.from_object(config_class)
+
+	db.init_app(app)
 
 	from app.api import bp as api_bp
 	app.register_blueprint(api_bp, url_prefix='/api')

@@ -10,3 +10,14 @@ flask-cors==3.0.8
 gunicorn==19.7.1
 Flask-SQLAlchemy==2.4.4
 openpyxl==3.0.5
+google-api-python-client==1.12.3
+google-auth-httplib2==0.0.4
+google-auth-oauthlib==0.4.1
+PyJWT==1.7.1
+slackclient==2.9.1
+gspread==3.6.0
+clint==0.5.1
+gspread-pandas==2.2.3
+sqlalchemy==1.3.20
+mysql-connector-python==8.0.21
+python-dotenv==0.14.0

@@ -1,47 +1,78 @@
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail, Email, To, Attachment, FileContent, FileName, FileType, Disposition, ContentId
-from datetime import datetime
+from apiclient import errors
+from httplib2 import Http
+from email.mime.text import MIMEText
+import base64
+from googleapiclient.discovery import build
+from google.oauth2 import service_account
 import pdb
-from dotenv import load_dotenv
 import os
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
+EMAIL_FROM = "it@miamiadschool.com"
+EMAIL_TO = "it@miamiadschool.com"
+EMAIL_SUBJECT = "Report: Error while uploading recordings"
+EMAIL_CONTENT = 'Hello, this is a test\nLyfepedia\nhttps://lyfepedia.com'
 
-SENDGRID_API_KEY='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'
-sg = SendGridAPIClient(SENDGRID_API_KEY)
+class Email:
 
-def send_simple_email(text, title='Report about the scraper', to_email='ideveloper003@protonmail.com'):
-    msg_body = '<strong>{} at {}</strong>'.format(text,  datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    message = Mail(
-        from_email='no-reply@scraper.tech',
-        to_emails=['cmdallm@gmail.com', 'ideveloper003@gmail.com'],
-        subject=title,
-        html_content=msg_body)
-    try:
-        response = sg.send(message)
-        print(response.status_code)
-    except Exception as e:
-        print(str(e.body))
+    def __init__(self):
+        SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+        BASE_PATH = os.path.abspath(os.curdir)
+        # BASE_PATH = '/root/miami-scripts'
+        SERVICE_ACCOUNT_FILE = f'{BASE_PATH}/creds/google_secret.json'
 
-def send_email_with_attachment_general(to_email='ideveloper003@gmail.com', from_email='info@scrapers.com', data="", html=''):
-    message = Mail(
-        from_email=from_email,
-        to_emails=to_email,
-        subject='Finished scraper for sysco. check the attachment',
-        html_content=html
-    )
-    for item in data:
-        attachment = Attachment()
-        attachment.file_content = FileContent(item['content'])
-        attachment.file_type = FileType('application/csv')
-        attachment.file_name = FileName(item['file_name'])
-        attachment.disposition = Disposition('attachment')
-        attachment.content_id = ContentId('Content ID')
-        message.add_attachment(attachment)
-    try:
-        sg = SendGridAPIClient(SENDGRID_API_KEY)
-        response = sg.send(message)
-        print(response.status_code)
-    except Exception as e:
-        print(e)
+        credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE,
+            scopes=SCOPES,
+            subject=EMAIL_FROM)
+        # delegated_credentials = credentials.with_subject(EMAIL_FROM)
+        self.service = build('gmail', 'v1', credentials=credentials, cache_discovery=False)
+
+    def send_message(self, msg, subject=EMAIL_SUBJECT, cc_emails=[]):
+        message = self.create_message(EMAIL_FROM, cc_emails, subject, msg)
+        sent = self._send_message('me', message)
+
+    def create_message(self, sender, emails, subject, message_text):
+        """Create a message for an email.
+        Args:
+        sender: Email address of the sender.
+        to: Email address of the receiver.
+        subject: The subject of the email message.
+        message_text: The text of the email message.
+        Returns:
+        An object containing a base64url encoded email object.
+        """
+        cc_emails = []
+        to = ''
+        if len(emails) == 1:
+            to = emails[0]
+            cc_emails.append("ideveloper003@gmail.com")
+        if len(emails) > 1:
+            cc_emails.append(emails[1:])
+
+        message = MIMEText(message_text)
+        message['to'] = to
+        message['cc'] = ','.join(cc_emails)
+        message['from'] = sender
+        message['subject'] = subject
+        return {'raw': base64.urlsafe_b64encode(message.as_string().encode('utf-8')).decode("ascii")}
+
+    def _send_message(self, user_id, message):
+        """Send an email message.
+        Args:
+        service: Authorized Gmail API service instance.
+        user_id: User's email address. The special value "me"
+        can be used to indicate the authenticated user.
+        message: Message to be sent.
+        Returns:
+        Sent Message.
+        """
+        try:
+            message = self.service.users().messages().send(userId=user_id, body=message).execute()
+            print('Message Id: %s' % message['id'])
+            return message
+        except errors.HttpError as error:
+            print('An error occurred: %s' % error)
+
+if __name__ == '__main__':
+    myemail = Email()
+    myemail.send_message('test1')
