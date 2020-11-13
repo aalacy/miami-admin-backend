@@ -20,8 +20,8 @@ class ZoomDB:
 		metadata.bind = engine
 		metadata.clear()
 
-		self.upload_history = Table(
-			'recording_upload_history', 
+		self.recording_upload = Table(
+			'recording_upload', 
 			metadata,
 			Column('id', Integer, primary_key=True),
 			Column('topic', String(512)),
@@ -81,7 +81,7 @@ class ZoomDB:
 				'topic': item['topic'],
 				'start_time': item['start_time'],
 				'cnt_files': item['cnt_files'],
-				'run_at': '',
+				'run_at': item['run_at'],
 				'show': False,
 				'recording_files': [item]
 			})
@@ -91,14 +91,15 @@ class ZoomDB:
 	def read_today_recordings(self):
 		self.read_all_recordings()
 
-		today = (datetime.today()).strftime('%b %d')
-		yesterday = (datetime.today() - timedelta(days=1)).strftime('%b %d')
+		today = (datetime.today()).strftime('%m/%d')
+		print(today)
+		yesterday = (datetime.today() - timedelta(days=1)).strftime('%m/%d')
 		today_items = [item for item in self.items if today in item['start_time'] or yesterday in item['start_time']]
 
 		return today_items
 
 	def read_all_recordings(self):
-		res = self.connection.execute('SELECT * FROM recording_upload_history')
+		res = self.connection.execute('SELECT * FROM recording_upload')
 		self.items = []
 		for r in res:
 			self.add_item_to_items(dict(r))
@@ -114,8 +115,11 @@ class ZoomDB:
 		return {}
 
 	def update_alert_emails(self, data):
-		update_statement = self.alert_email.update().where(self.alert_email.c.id == data['id']).values({
-				'cc_emails': data['cc_emails']
-			})
+		if data.get('id', ''):
+			update_statement = self.alert_email.update().where(self.alert_email.c.id == data['id']).values({
+					'cc_emails': data['cc_emails']
+				})
 
-		self.connection.execute(update_statement)
+			self.connection.execute(update_statement)
+		else:
+			self.connection.execute(self.alert_email.insert(), data)
