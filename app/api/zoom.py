@@ -94,7 +94,7 @@ class ZoomDB:
 		today = (datetime.today()).strftime('%m/%d')
 		print(today)
 		yesterday = (datetime.today() - timedelta(days=1)).strftime('%m/%d')
-		today_items = [item for item in self.items if today in item['start_time'] or yesterday in item['start_time']]
+		today_items = [item for item in self.items if today in item['run_at'] or yesterday in item['run_at']]
 
 		return today_items
 
