@@ -69,7 +69,7 @@ class ZoomDB:
 		is_exist = False
 		new_items = []
 		for _item in self.items:
-			if _item['meeting_id'] == item['meeting_id']:
+			if _item['meeting_id'] == item['meeting_id'] and _item['start_time'] == item['start_time']:
 				is_exist = True
 				_item['recording_files'].append(item)
 
