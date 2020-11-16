@@ -89,7 +89,10 @@ class ZoomDB:
 		self.items = new_items
 
 	def read_today_recordings(self):
-		self.read_all_recordings()
+		res = self.connection.execute('SELECT * FROM recording_upload')
+		self.items = []
+		for r in res:
+			self.add_item_to_items(dict(r))
 
 		today = (datetime.today()).strftime('%m/%d')
 		yesterday = (datetime.today() - timedelta(days=1)).strftime('%m/%d')
@@ -100,7 +103,7 @@ class ZoomDB:
 		return today_items
 
 	def read_all_recordings(self):
-		res = self.connection.execute('SELECT * FROM recording_upload')
+		res = self.connection.execute('SELECT * FROM recording_upload_history')
 		self.items = []
 		for r in res:
 			self.add_item_to_items(dict(r))
@@ -113,6 +116,8 @@ class ZoomDB:
 		items = [dict(r) for r in res]
 		if items:
 			return items[0]
+
+		self.connection.close()
 		return {}
 
 	def update_alert_emails(self, data):
@@ -124,3 +129,5 @@ class ZoomDB:
 			self.connection.execute(update_statement)
 		else:
 			self.connection.execute(self.alert_email.insert(), data)
+
+		self.connection.close()
