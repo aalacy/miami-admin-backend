@@ -82,6 +82,9 @@ class User(db.Model):
         except jwt.InvalidTokenError:
             return (2, 'Invalid token. Please log in again.')
 
+
+
+
     def get_token(self, expires_in=3600):
         now = datetime.utcnow()
         if self.token and self.token_expiration > now + timedelta(seconds=60):
@@ -112,3 +115,22 @@ class User(db.Model):
         
         user.code_expiration = datetime.utcnow()
         return user
+
+    @staticmethod
+    def get_all():
+        users = User.query.all()
+        items = [user.to_dict() for user in users]
+        return items
+
+    @staticmethod
+    def verify_token(token):
+        status = True
+        user = User.query.filter_by(email=token['email']).first()
+        if user:
+            if user.status != 'Active':
+                status = False
+
+        else:
+            status = False
+
+        return status

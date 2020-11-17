@@ -77,9 +77,11 @@ class ZoomDB:
 
 		if not is_exist:
 			new_items.append({
+				'id': item['id'],
 				'meeting_id': item['meeting_id'],
 				'topic': item['topic'],
 				'start_time': item['start_time'],
+				'folder_link': item['folder_link'],
 				'cnt_files': item['cnt_files'],
 				'run_at': item['run_at'],
 				'show': False,
@@ -103,7 +105,7 @@ class ZoomDB:
 		return today_items
 
 	def read_all_recordings(self):
-		res = self.connection.execute('SELECT * FROM recording_upload_history')
+		res = self.connection.execute('SELECT * FROM recording_upload_history LIMIT 50')
 		self.items = []
 		for r in res:
 			self.add_item_to_items(dict(r))
