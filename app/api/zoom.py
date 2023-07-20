@@ -105,7 +105,7 @@ class ZoomDB:
 		return today_items
 
 	def read_all_recordings(self):
-		res = self.connection.execute('SELECT * FROM recording_upload_history LIMIT 50')
+		res = self.connection.execute('SELECT * FROM recording_upload_history')
 		self.items = []
 		for r in res:
 			self.add_item_to_items(dict(r))
